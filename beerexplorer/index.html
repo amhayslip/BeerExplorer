@@ -13,43 +13,58 @@
     
 </head>
 <body>
+<h1 id="title">BeerExplorer</h1>
 <div ng-controller="BeerCtrl">
-  <form class="form-horizontal">
-      <input type="text" ng-model="formNewBeer" ng-model-instant>
-      <button class="btn" ng-click="addBeer()"><i class="icon-plus"></i>Add Beer</button>
-  </form>
+  <div class="container">
+    <form class="form-horizontal center">
+        <input type="text" ng-model="formNewBeer" ng-model-instant>
+        <button class="btn btn-success" ng-click="addBeer()"><i class="icon-plus"></i>Add Beer</button>
+    </form>
+  </div>
+
     <!-- <h2>Total Beers: {{getTotalBeers()}}</h2> -->
-    <h2>Beers to Try</h2>
-    <ul class="unstyled">
-        <li ng-repeat="beer in beers | filter:notTried">
-            <button class="btn" ng-click="tryBeer(beer)">Try</button>
-            <span class="tried-{{beer.tried}}">{{beer.name}}</span>
-        </li>
-    </ul>
+    <div class="container main">
+      <h2>Beers to Try</h2>
+      <ul class="unstyled">
+          <li ng-repeat="beer in beers | filter:notTried">
+              <button class="btn" ng-click="tryBeer(beer)">Try</button>
+              <span class="tried-{{beer.tried}}">{{beer.name}}</span>
+          </li>
+      </ul>
+   
 
     <!-- <h2>Beers Already Tried: {{getTriedBeers()}}</h2> -->
     <!-- <h2>Beers Already Tried: {{triedBeers}}</h2> -->
-    <h2>Beers to Review</h2>
-    <ul class="unstyled">
-        <li ng-repeat="beer in beers | filter:tried">
-            <span class="tried-{{beer.tried}}">{{beer.name}}</span>
-            <form class="form-horizontal">
-                <input type="text" class="rev" ng-model="formReviewBeer" ng-model-instant>
-                <button class="btn" ng-click="addReview(beer)"><i class="icon-plus"></i>Add Review</button>
-            </form>
-        </li>
-    </ul>
+      <h2>Beers to Review</h2>
+      <ul class="unstyled">
+          <li ng-repeat="beer in beers | filter:tried">
+              <!-- <button class="btn" ng-click="showdiv()">Review</button> -->
+              <!-- <button class="btn reviewshow">Review</button> -->
+              <span class="tried-{{beer.tried}}">{{beer.name}}</span>
+                <form class="form-horizontal">
+                    <input type="text" class="rev" ng-model="formReviewBeer" ng-model-instant>
+                    <button class="btn" ng-click="addReview(beer)"><i class="icon-plus"></i>Add Review</button>
+                </form>
+          </li>
+      </ul>
 
-    <h2>Beer Conquered</h2>
-    <ul class="unstyled">
-        <li ng-repeat="beer in beers | filter:reviewed">
-            <span class="tried-{{beer.tried}}">{{beer.name}}</span> |
-            <span class="tried-{{beer.tried}}">{{beer.review}}</span>
-        </li>
-    </ul>
+      <h2>Beers Consumed & Conquered</h2>
+      <ul class="unstyled panel-primary">
+          <li ng-repeat="beer in beers | filter:reviewed">
+              <button class="btn" ng-click="enableEditor(beer)">Edit</button>
+              <span class="tried-{{beer.tried}}">{{beer.name}}</span>
+              <span class="beerev tried-{{beer.tried}}">{{beer.review}}</span>
+          </li>
+          <div ng-show="editorEnabled">
+              <input ng-model="editableName" ng-show="editorEnabled">
+              <a href="#" ng-click="save()">Save</a>
+              or
+              <a href="#" ng-click="disableEditor(beer)">cancel</a>.
+            </div>
+      </ul>
+    </div>
 
 
-    <button class="btn-large" ng-click="clearCompleted()"><i class="icon-trash"></i>Clear Completed</button>
 </div>
 
 </body>

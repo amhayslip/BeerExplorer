@@ -3,10 +3,10 @@ var app = angular.module("beerexplorer", []);
 // seed beer data
 function BeerCtrl($scope) {
     $scope.beers = [
-        {name:'120 Minute IPA', tried:false, reviewed:false, review:""},
-        {name:'512 IPA', tried:false, reviewed:false, review:""},
-        {name:'Founders Breakfast Stout', tried:true, reviewed:false, review:""},
-        {name:'Founders Imperial Stout', tried:true, reviewed:false, review:""}
+        {name:'120 Minute IPA', tried:true, reviewed:true, review:"Excellent beer.  Great head.", rating:null},
+        {name:'512 IPA', tried:true, reviewed:false, review:"", rating:null},
+        {name:'Founders Breakfast Stout', tried:false, reviewed:false, review:"", rating:null},
+        {name:'Founders Imperial Stout', tried:false, reviewed:false, review:"", rating:null}
     ];
 
     $scope.getTotalBeers = function () {
@@ -21,7 +21,6 @@ function BeerCtrl($scope) {
 
 
     $scope.triedBeers = 0;
-
     $scope.getTriedBeers = function () {
         var triedBeers = [];
             for(var i = 0; i < $scope.beers.length; i += 1) {
@@ -32,7 +31,6 @@ function BeerCtrl($scope) {
                 }
             }
             $scope.triedBeers = triedBeers.length;
-
         };
 
 
@@ -72,13 +70,6 @@ function BeerCtrl($scope) {
         else {
         }
     }
-
-
-    // $scope.clearCompleted = function () {
-    //     $scope.beers = _.filter($scope.beers, function(beer){
-    //         return !beer.tried;
-    //     });
-    // };
 
 // function for adding review of specific beer
     $scope.addReview = function (beer) {
