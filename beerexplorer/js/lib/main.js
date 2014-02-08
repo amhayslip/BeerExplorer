@@ -20,18 +20,18 @@ function BeerCtrl($scope) {
     };    
 
 
-    $scope.triedBeers = 0;
-    $scope.getTriedBeers = function () {
-        var triedBeers = [];
-            for(var i = 0; i < $scope.beers.length; i += 1) {
-                if ($scope.beers[i].tried) {
-                     triedBeers.push(beers[i]);
-                }
-                else {
-                }
-            }
-            $scope.triedBeers = triedBeers.length;
-        };
+    // $scope.triedBeers = 0;
+    // $scope.getTriedBeers = function () {
+    //     var triedBeers = [];
+    //         for(var i = 0; i < $scope.beers.length; i += 1) {
+    //             if ($scope.beers[i].tried) {
+    //                  triedBeers.push(beers[i]);
+    //             }
+    //             else {
+    //             }
+    //         }
+    //         $scope.triedBeers = triedBeers.length;
+    //     };
 
 
 // filter for only displaying beers that have NOT been tried

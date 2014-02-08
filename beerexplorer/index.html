@@ -51,16 +51,9 @@
       <h2>Beers Consumed & Conquered</h2>
       <ul class="unstyled panel-primary">
           <li ng-repeat="beer in beers | filter:reviewed">
-              <button class="btn" ng-click="enableEditor(beer)">Edit</button>
               <span class="tried-{{beer.tried}}">{{beer.name}}</span>
               <span class="beerev tried-{{beer.tried}}">{{beer.review}}</span>
           </li>
-          <div ng-show="editorEnabled">
-              <input ng-model="editableName" ng-show="editorEnabled">
-              <a href="#" ng-click="save()">Save</a>
-              or
-              <a href="#" ng-click="disableEditor(beer)">cancel</a>.
-            </div>
       </ul>
     </div>
 
